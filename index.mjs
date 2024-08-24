@@ -17,7 +17,11 @@ const readFileContent = async (filePath, transform) => {
   return transform(filePath, content);
 };
 
-const processDirectory = async (dirPath, basePath = dirPath, transform) => {
+const processDirectory = async (
+  dirPath,
+  basePath = dirPath,
+  { transform, mode } = {}
+) => {
   const entries = await fs.readdir(dirPath, { withFileTypes: true });
   const result = {};
 
@@ -25,17 +29,19 @@ const processDirectory = async (dirPath, basePath = dirPath, transform) => {
     const fullPath = join(dirPath, entry.name);
 
     if (entry.isDirectory()) {
-      result[entry.name] = await processDirectory(
-        fullPath,
-        basePath,
-        transform
-      );
+      result[entry.name] = await processDirectory(fullPath, basePath, {
+        transform,
+        mode,
+      });
     } else {
       const content = await readFileContent(fullPath, transform);
-      result[entry.name] = {
-        data: content,
-        modified: (await fs.stat(fullPath)).mtime,
-      };
+      result[entry.name] =
+        mode === "direct-content"
+          ? content
+          : {
+              data: content,
+              modified: (await fs.stat(fullPath)).mtime,
+            };
     }
   }
 
@@ -44,7 +50,7 @@ const processDirectory = async (dirPath, basePath = dirPath, transform) => {
 
 export const manifestDirectory = (
   directoryPath,
-  { transform: transformProto = "textApproveList" } = {}
+  { transform: transformProto = "textApproveList", mode = "" } = {}
 ) => {
   let transform;
   switch (transformProto) {
@@ -78,9 +84,14 @@ export const manifestDirectory = (
         return content.toString("utf8");
       };
       break;
+    case "text":
+      transform = (_, content) => {
+        return content.toString();
+      };
+      break;
   }
   try {
-    return processDirectory(directoryPath, directoryPath, transform);
+    return processDirectory(directoryPath, directoryPath, { transform, mode });
   } catch (error) {
     console.error("Error converting directory to manifest fs:", error);
     throw error;
