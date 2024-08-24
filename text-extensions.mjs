@@ -14,6 +14,7 @@ const textExtensions = [
   ".scss",
   ".sass",
   ".less",
+  ".mjs",
   ".js",
   ".jsx",
   ".ts",

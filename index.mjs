@@ -42,10 +42,13 @@ const processDirectory = async (dirPath, basePath = dirPath, transform) => {
   return result;
 };
 
-export const manifestDirectory = (directoryPath, transformProto = "utf8") => {
+export const manifestDirectory = (
+  directoryPath,
+  transformProto = "textApproveList"
+) => {
   let transform;
   switch (transformProto) {
-    case "testApproveList":
+    case "textApproveList":
       transform = (filePath, content) => {
         return isTextFile(filePath)
           ? content.toString()
