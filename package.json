@@ -1,0 +1,13 @@
+{
+  "name": "manifest-directory",
+  "version": "0.0.0",
+  "main": "index.mjs",
+  "description": "A simple module to read a directory and return a manifest of its contents.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "description": ""
+}
