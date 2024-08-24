@@ -1,6 +1,6 @@
 # Manifest Directory
 
-[![npm version](https://badge.fury.io/js/served-cold.svg)](https://badge.fury.io/js/manifest-directory)'
+[![npm version](https://badge.fury.io/js/served-cold.svg)](https://badge.fury.io/js/manifest-directory)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <img alt="" width="512" height="512" src="./md.jpeg" style="width:512px;height:512px"/>
@@ -16,7 +16,7 @@ npm install manifest-directory
 ## Usage
 
 ```javascript
-import dirData from "dir-data";
+import dirData from "manifest-directory";
 const data = dirData("path/to/directory");
 console.log(data);
 ```
@@ -27,7 +27,7 @@ You can pass a function as the second argument to transform the file contents.
 It receives the file path and the file content as arguments.
 
 ```javascript
-import dirData from "dir-data";
+import dirData from "manifest-directory";
 const data = dirData("path/to/directory", (path, content) => {
   return content.toUpperCase();
 });
@@ -39,7 +39,7 @@ console.log(data);
 You can use one of the pre-defined transformations by passing a string as the second argument.
 
 ```javascript
-import dirData from "dir-data";
+import dirData from "manifest-directory";
 const data = dirData("path/to/directory", "textAllowList");
 console.log(data);
 ```
