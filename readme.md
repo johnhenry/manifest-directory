@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/served-cold.svg)](https://badge.fury.io/js/manifest-directory)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-<img alt="" width="512" height="512" src="./md.jpeg" style="width:512px;height:512px"/>
+<img alt="" width="512" height="512" src="./md.png" style="width:512px;height:512px"/>
 
 Turns a directory of files into a dictionary of file contents.
 
@@ -40,7 +40,7 @@ You can use one of the pre-defined transformations by passing a string as the se
 
 ```javascript
 import dirData from "manifest-directory";
-const data = dirData("path/to/directory", "textAllowList");
+const data = dirData("path/to/directory", { transform: "binary" });
 console.log(data);
 ```
 

@@ -44,7 +44,7 @@ const processDirectory = async (dirPath, basePath = dirPath, transform) => {
 
 export const manifestDirectory = (
   directoryPath,
-  transformProto = "textApproveList"
+  { transform: transformProto = "textApproveList" } = {}
 ) => {
   let transform;
   switch (transformProto) {
