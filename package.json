@@ -1,6 +1,6 @@
 {
   "name": "manifest-directory",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "index.mjs",
   "description": "Turns a directory of files into a dictionary of file contents",
   "scripts": {
