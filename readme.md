@@ -76,3 +76,15 @@ writeFileSync("path/to/output.json", JSON.stringify(data, null, 2));
 ffs path/to/output.json
 cd /output
 ```
+
+### Reverse Usage
+
+Use `directoryManifesteded` to write the dictionary back to the filesystem.
+
+```javascript
+import { directoryManifesteded } from "manifest-directory";
+const data = {
+  "readme.md": "# hello\n",
+};
+directoryManifesteded("path/to/directory", data);
+```
