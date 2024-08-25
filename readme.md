@@ -79,12 +79,12 @@ cd /output
 
 ### Reverse Usage
 
-Use `directoryManifesteded` to write the dictionary back to the filesystem.
+Use `directoryManifested` to write the dictionary back to the filesystem.
 
 ```javascript
-import { directoryManifesteded } from "manifest-directory";
+import { directoryManifested } from "manifest-directory";
 const data = {
   "readme.md": "# hello\n",
 };
-directoryManifesteded("path/to/directory", data);
+directoryManifested("path/to/directory", data);
 ```
